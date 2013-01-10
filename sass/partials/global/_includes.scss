@@ -1,0 +1,192 @@
+// Fall back values for ie boolian vars
+$ie7: false !default;
+$ie8: false !default;
+$ie9: false !default;
+
+$lte-ie7: false !default;
+$lte-ie8: false !default;
+$lte-ie9: false !default;
+
+
+//Colors - WCAG2 minimum contrast ratio normal/small text: 4.5:1 - large text (14px bold +): 3:1
+// -------------------------------> white ------> black -----> combines with
+
+
+// black & white defined, so they can be tweaked if necessary -------------------------------------
+$black: #000;			 	   //    21:1           1:1        --> white only:)
+$white: #fff;    			   //     1:1          21:1        --> black only:)
+
+//font-sizes
+$fsize-default: 0.813em; //13px
+
+$fsize-h1: 2em; //26px
+$fsize-h2: 1.385em; //18px
+$fsize-h3: 1.385em; //18px
+
+/* ## grid setup ## */
+$column-width:60;
+$gutter-width:20;
+$columns:12;
+$total-width:100%;
+
+
+/* ## paths ## */
+$csspie: "/PIE.htc";
+
+/* ## fonts ## */
+@mixin default-fontfamily { font-family:'Verdana', sans-serif; }
+
+@mixin custom-fontfamily($style:'bold') {
+
+	@if $style == 'bold' {
+    	font-family:'mycustomfontbold', 'Verdana', sans-serif; font-weight:normal;
+	} @else {
+		font-family:'mycustomfontregular', 'Verdana', sans-serif; font-weight:normal; letter-spacing:0;
+	}
+	
+	//IE8 FIX TO FORCE CLEARTYPE
+	@if $lte-ie8 {
+		filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src=/includes/css/images/hIEfix.png,sizingMethod=crop); zoom:1;
+	}
+}
+
+/* ## Fix the clear on elements without the required class. NB: watch it! ## */
+@mixin cf { *zoom:1;
+	&:before, &:after { content: ""; display: table; }
+	&:after { clear: both; }
+}
+
+/* ## rounded corners ## */
+@mixin rounded-corners ($radius: 5px) {
+	border-radius: $radius;
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius; 
+}
+
+@mixin rounded-corners-no-ie ($radius: 5px) { border-radius: $radius; -webkit-border-radius: $radius; -moz-border-radius: $radius; }
+
+/* ## define gradients ## */
+/* Make gradient on element. Note: define colors in argument brackets. Default = #ffffff and #eeeeee */
+@mixin gradient($startcolor: #ffffff,$endcolor: #eeeeee) {
+	background-color: $startcolor;
+	background-image: linear-gradient(bottom, $endcolor 0%, $startcolor 100%);
+	background-image: -o-linear-gradient(bottom, $endcolor 0%, $startcolor 100%);
+	background-image: -moz-linear-gradient(bottom, $endcolor 0%, $startcolor 100%);
+	background-image: -webkit-linear-gradient(bottom, $endcolor 0%, $startcolor 100%);
+	background-image: -ms-linear-gradient(bottom, $endcolor 0%, $startcolor 100%);
+	background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, $endcolor),color-stop(1, $startcolor));
+}
+	
+/* ## Opacity (RGBA) ## */
+/* Note: define RGB color values and opacity in argument brackets, e.g. (14,8,132,0.4) */
+@mixin transparent($red,$green,$blue,$opaque, $csspie: false) {
+	background-color: rgb($red, $green, $blue);
+	@if $lte-ie8 == false {
+		background-color: rgba($red, $green, $blue, $opaque);
+	}
+	@if $csspie and $lte-ie8 {
+		-pie-background: rgba($red, $green, $blue, $opaque);
+		behavior: url($csspie);
+	}
+}
+
+@mixin transparent-hex($color,$opaque, $csspie: false) {
+	background-color: $color;
+	@if $lte-ie8 == false {
+		background-color: rgba($color,$opaque);
+	}
+	@if $csspie and $lte-ie8 {
+		-pie-background: rgba($color, $opaque);
+		behavior: url($csspie);
+	}
+}
+
+/* ## Transitions */
+@mixin transition($property,$duration) {
+	-moz-transition-property: $property;  /* FF4+ */
+	-moz-transition-duration: $duration;
+	-webkit-transition-property: $property;  /* Saf3.2+, Chrome */
+	-webkit-transition-duration: $duration;
+	-o-transition-property: $property;  /* Opera 10.5+ */
+	-o-transition-duration: $duration;
+	-ms-transition-property: $property;  /* IE10? */
+	-ms-transition-duration: $duration;
+	transition-property: $property;  /* Standard */
+	transition-duration: $duration;
+}
+@mixin multiple-transitions($property1,$property2,$duration) {
+	-moz-transition-property: $property1, $property2;  /* FF4+ */
+	-moz-transition-duration: $duration;
+	-webkit-transition-property:  $property1, $property2;  /* Saf3.2+, Chrome */
+	-webkit-transition-duration: $duration;
+	-o-transition-property:  $property1, $property2;  /* Opera 10.5+ */
+	-o-transition-duration: $duration;
+	-ms-transition-property:  $property1, $property2;  /* IE10? */
+	-ms-transition-duration: $duration;
+	transition-property:  $property1, $property2;  /* Standard */
+	transition-duration: $duration;
+}
+	
+/* ## Box shadow ## */
+@mixin dropshadow($hor:2px,$vert:2px,$blur:2px,$spread:2px,$color:rgba(0,0,0,0.3)) {
+	-webkit-box-shadow: $hor $vert $blur $spread $color;
+	-moz-box-shadow: $hor $vert $blur $spread $color;
+	box-shadow: $hor $vert $blur $spread $color;
+} 
+@mixin dropshadow-inset($hor:2px,$vert:2px,$blur:2px,$spread:2px,$color:rgba(0,0,0,0.3)) { -webkit-box-shadow: $hor $vert $blur $spread $color inset; -moz-box-shadow: $hor $vert $blur $spread $color inset; box-shadow: $hor $vert $blur $spread $color inset; }
+
+
+/* ## Accessibility ## */
+/* Places an item out of sight while keeping it available for screenreaders. */
+/* Focusable elements such as links and inputs are placed back in sight on focus, for keyboard users. */
+@mixin accHide { position:absolute; left:-999em; top:0; &:focus { left:1em; } }
+@mixin accShow { position:relative; left:0; top:0; &:focus { left:0; } }
+
+@mixin hide-text { text-indent:100%; white-space:nowrap; overflow:hidden; }
+@mixin show-text { text-indent:0; white-space:normal; overflow:auto; }
+
+/* ## misc ## */
+/* Strip a list */
+@mixin nobullets {
+	list-style:none; list-style-type:none; padding:0; margin:0;     
+
+	> li:before { 
+		content:none; display:none;
+	}
+}
+
+
+@mixin box-sizing {
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	box-sizing:border-box;
+}
+
+@mixin no-box-sizing { -moz-box-sizing:content-box; -webkit-box-sizing:content-box; box-sizing:content-box; }
+
+@mixin ellipsIt { display: block; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+
+/* MEDIA QUERIES */
+$mobile: 480px;
+$tablet: 480px;
+$desktop: 1024px;
+
+// HOW TO:
+// @include device(mobile) { ... }
+// @include device(tablet) { ... }
+// @include device(desktop) { ... }
+
+@mixin device($device) {
+  @if $device == mobile {
+  	@media only screen and (max-width: $mobile) { @content; }
+  }
+  @else if $lte-ie8 {
+  	@content;
+  }
+  @else if $device == tablet {
+    @media only screen and (min-width: $tablet) { @content; }
+  }
+  @else if $device == desktop {
+    @media only screen and (min-width: $desktop) { @content; }
+  }
+}
