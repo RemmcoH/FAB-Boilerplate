@@ -71,14 +71,14 @@ In gist staat een codesnippet van het basistemplate voor een webpagina zoals die
 
 Toelichting:
 Plaats de link naar de externe CSS-bestanden in  de HEAD.
-Plaats zoveel mogelijk Javascript  achteraan in de code, dat is voor de </body>. Dit is omdat javascript niet parallel geladen kan worden, hier wordt dus op gewacht.
+Plaats zoveel mogelijk Javascript  achteraan in de code, dat is voor de /body. Dit is omdat javascript niet parallel geladen kan worden, hier wordt dus op gewacht.
 Is de javascript direct nodig, dus vóór de html, laadt het dan in elk geval na de css.
 
 
 
 Best practices
 Gebruik de html-elementen waar ze voor bedoeld zijn. 
-Dus <p> om paragrafen van elkaar te onderscheiden en geen <br>.
+Dus P om paragrafen van elkaar te onderscheiden en geen BR.
 Gebruik DL en BLOCKQUOTE waar van toepassing.
 Plaats items in een lijst-vorm altijd in een UL, OL of DL (zeker ook navigatie!), nooit in een set van DIV’s of P’s.
 Voorzie elk input-veld van een label in combinatie met het for-attribuut (en cursor: pointer;)
@@ -92,7 +92,7 @@ Gebruik title-tags voor links waar nodig
 Voorkom Compatibility Mode
 
 IE wil nog wel een spontaan in Compatibility Mode schieten waardoor een webpagina er niet goed uitziet. Voorkom dit door de volgende regel in de head te plaatsen:
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">    
 
 Een overzicht met nuttige meta-tags:
 http://www.html-5.com/metatags/index.html#viewport-meta-tag
@@ -150,14 +150,15 @@ Bijvoorbeeld:
 
 De naam van een element binnen een blok-element is een samenvoeging van de blok-naam en de element-naam, om niet te diep te hoeven nesten in de css.
 Dus:
-<ul class="menu">
- <li class=”menu-item”>
-   …
- </li>
- <li class=”menu-item”>
-   …
- </li>
-</ul>
+        
+    <ul class="menu">
+     <li class=”menu-item”>
+       …
+     </li>
+     <li class=”menu-item”>
+       …
+     </li>
+    </ul>
 
 
 
