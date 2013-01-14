@@ -30,31 +30,6 @@ In principe houden we deze richtlijnen aan tenzij je een goede reden hebt om het
 
 TODO: Check of er iets van validator voor styling de html en css is
 
-
-Ook de bestanden staan overzichtelijk in de working-directory:
-
-/presentation
- /css
-   /screen.css
-   /ie7.css
-   /ie8.css
-   /ie9.css
-   /print.css
- /images  		
-   background.png
-   /sprites
-     /buttons
-       form.png
-     /icons
-     /...
-/behaviour
- engine.js
- head.js  
- /libs
-   jquery
-
-In github komt een volledige set die als basis voor een nieuw webproject gebruikt kan worden, een Fabrique boilerplate.
-
 Om te checken welke moderne features door de browser ondersteund worden gebruiken we Modernizr. In de boilerplate wordt een complete developers-versie geladen. Deze versie bevat alle opties maar is relatief zwaar. Bij de oplevering van een project dient deze vervangen te worden door een op maat gemaakte en daardoor lichtere modernizr.js. Die kun je hier genereren: http://modernizr.com/download/.
 
 Bestandsnamen
@@ -77,21 +52,22 @@ Is de javascript direct nodig, dus vóór de html, laadt het dan in elk geval na
 
 
 Best practices
-Gebruik de html-elementen waar ze voor bedoeld zijn. 
-Dus P om paragrafen van elkaar te onderscheiden en geen BR.
-Gebruik DL en BLOCKQUOTE waar van toepassing.
-Plaats items in een lijst-vorm altijd in een UL, OL of DL (zeker ook navigatie!), nooit in een set van DIV’s of P’s.
-Voorzie elk input-veld van een label in combinatie met het for-attribuut (en cursor: pointer;)
-Groepeer input-velden in een fieldset
-Plaats een comment bij het sluiten van (container-)div’s om de code helder te houden.
-Gebruik alt-tags voor plaatjes
-Gebruik title-tags voor links waar nodig
+* Gebruik de html-elementen waar ze voor bedoeld zijn. 
+* Dus P om paragrafen van elkaar te onderscheiden en geen BR.
+* Gebruik DL en BLOCKQUOTE waar van toepassing.
+* Plaats items in een lijst-vorm altijd in een UL, OL of DL (zeker ook navigatie!), nooit in een set van DIV’s of P’s.
+* Voorzie elk input-veld van een label in combinatie met het for-attribuut (en cursor: pointer;)
+* Groepeer input-velden in een fieldset
+* Plaats een comment bij het sluiten van (container-)div’s om de code helder te houden.
+* Gebruik alt-tags voor plaatjes
+* Gebruik title-tags voor links waar nodig
 
 
 
 Voorkom Compatibility Mode
 
 IE wil nog wel een spontaan in Compatibility Mode schieten waardoor een webpagina er niet goed uitziet. Voorkom dit door de volgende regel in de head te plaatsen:
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">    
 
 Een overzicht met nuttige meta-tags:
@@ -113,40 +89,20 @@ TODO: Bij Compass net ff anders
 
 Sections
 
-CSS style blocks should be grouped by section and ordered according to the markup in the HTML document. Common sections include the following: Of, in het geval van Compass: foldernamen.
-Global
-Type
-Forms
-Header
-Navigation
-Content
-Footer
-
-Code conventies
-Elke selector moet:
-op z’n eigen regel staan
-worden gevolgd door een spatie
-eindigen met een open-accolade op dezelfde regel
-worden gesloten met een sluit-accolade op een nieuwe regel zonder indenting
-
-Elk eigenschap-waarde paar moet:
-op z’n eigen regel staan
-indenten met 1 tab
-een spatie bevatten achter de punt-comma (ivm minifyen)
 
 Om de css flexibel te houden moeten elementen zo gestijld worden dat ze overal op een site geplaatst kunnen worden, onafhankelijke css.
 Zorg ervoor dat:
-Een blok of element een unieke naam heeft
-Er geen html-elementen in de CSS-selectoren ( .menu.li ) gebruikt worden (zijn context-afhankelijk)
-Voorkom het nesten van meerdere blokken in CSS
+* Een blok of element een unieke naam heeft
+* Er geen html-elementen in de CSS-selectoren ( .menu.li ) gebruikt worden (zijn context-afhankelijk)
+* Voorkom het nesten van meerdere blokken in CSS
 ….
 Naamgeving
 
 Bepaal de classnaam of het ID van een (blok-)element op basis van wat het element is of doet, niet op hoe het er uit ziet. Mocht de stijl dan wijzigen is de naam nog steeds logisch.
 Bijvoorbeeld:
-<ul class="menu">
- …
-</ul>
+    <ul class="menu">
+     …
+    </ul>
 
 De naam van een element binnen een blok-element is een samenvoeging van de blok-naam en de element-naam, om niet te diep te hoeven nesten in de css.
 Dus:
@@ -165,30 +121,31 @@ Dus:
 Best Practices
 
 
-Gebruik een global normalize / reset. Dit helpt voor een meer consistente cross-browser presentatie.
-Maak gebruik van sprites voor alle rollover- en active-states. Dit voorkomt een flikkering en vermindert het aantal HTTP-requests.
-Gebruik zo min mogelijk browser-specifieke stijlen. Waar nodig gebruik een browser-specifiek css document.
-Gebruik waar mogelijk ID ipv class. Beter voor de performance.
-Gebruik zo min mogelijk ‘dure’ selectoren. Vermijd bijvoorbeeld de * (wildcard) en kwalificaties van ID’s: “div#ID”. Beter voor de performance.
-Vermijdt het gerbuik van ‘!important’. Slecht voor onderhoudbaarheid.
-Valideer de CSS
+* Gebruik een global normalize. Dit haalt de verschillen tussen de verschillende browsers weg en helpt voor een meer consistente cross-browser presentatie.
+* Maak gebruik van sprites voor alle rollover- en active-states. Dit voorkomt een flikkering en vermindert het aantal HTTP-requests.
+* Gebruik zo min mogelijk browser-specifieke stijlen. Waar nodig gebruik een browser-specifiek css document.
+* Gebruik waar mogelijk ID ipv class. Beter voor de performance.
+* Gebruik zo min mogelijk ‘dure’ selectoren. Vermijd bijvoorbeeld de * (wildcard) en kwalificaties van ID’s: “div#ID”. Beter voor de performance.
+* Vermijdt het gerbuik van ‘!important’. Slecht voor onderhoudbaarheid.
+* Valideer de CSS (http://validator.w3.org/)
 
 
 
 @font-face
 Voor het tonen van custom fonts zijn verschillende technieken. Wij gebruiken @font-face. Dit is onderdeel van W3C’s CSS Font Module. Dat is goed voor browser-ondersteuning en populariteit. Om het in de bekende browsers te laten werken moet het font in meerdere formaten aangeleverd worden en de bron erbij vermeld worden.
 Een goed cross-browser voorbeeld:
-@font-face {
-font-family: 'MyFontFamily';
-src: url('myfont-webfont.eot');                   /* IE9 Compat Modes */
-src: url('myfont-webfont.eot?iefix') format('eot'),        /* IE6-IE8 */
-url('myfont-webfont.woff') format('woff'),         /* Modern Browsers */
-url('myfont-webfont.ttf') format('truetype'), /* Safari, Android, iOS */
-url('myfont-webfont.svg#svgFontName') format('svg');    /* Legacy iOS */
-font-weight: <font-weight>;
-font-style: <font-style>;
-// etc.
-}
+
+    @font-face {
+    font-family: 'MyFontFamily';
+    src: url('myfont-webfont.eot');                   /* IE9 Compat Modes */
+    src: url('myfont-webfont.eot?iefix') format('eot'),        /* IE6-IE8 */
+    url('myfont-webfont.woff') format('woff'),         /* Modern Browsers */
+    url('myfont-webfont.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('myfont-webfont.svg#svgFontName') format('svg');    /* Legacy iOS */
+    font-weight: <font-weight>;
+    font-style: <font-style>;
+    // etc.
+    }
 Cross-Browser Compatibility
 Safari, IE 6-9, IE 9 Compatibility Modes, Firefox, Chrome, iOS, Android, Opera
 
@@ -200,12 +157,12 @@ Safari, IE 6-9, IE 9 Compatibility Modes, Firefox, Chrome, iOS, Android, Opera
 JAVASCRIPT
 Best practices
 
-Ook javascript staat zoveel mogelijk in externe bestanden.
-Hou het leesbaar. Zorg voor logische namen voor functies en variabelen, niet zo kort mogelijk maar zo duidelijk mogelijk. Voeg witregels tussen blokken code die niet direct met elkaar te maken hebben.
-Gebruik comments goed, niet te weinig maar ook niet te veel, dan is er iets mis met je code.
-Plaats constanten en configuratie-variabelen (zoals lengte van animaties) bovenin de code.
-Schrijf functies zo generiek mogelijk. Gebruik parameters en return-values. Zo kan de functie hergebruikt worden.
-Gebruik zo min mogelijk globale variabelen, denk aan de scope.
+* Ook javascript staat zoveel mogelijk in externe bestanden.
+* Hou het leesbaar. Zorg voor logische namen voor functies en variabelen, niet zo kort mogelijk maar zo duidelijk mogelijk. Voeg witregels tussen blokken code die niet direct met elkaar te maken hebben.
+* Gebruik comments goed, niet te weinig maar ook niet te veel, dan is er iets mis met je code.
+* Plaats constanten en configuratie-variabelen (zoals lengte van animaties) bovenin de code.
+* Schrijf functies zo generiek mogelijk. Gebruik parameters en return-values. Zo kan de functie hergebruikt worden.
+* Gebruik zo min mogelijk globale variabelen, denk aan de scope.
 
 
 Code conventies
@@ -217,15 +174,15 @@ Iets over het laden van bestanden en optimalisatie. Bestanden samenvoegen in plu
 
 DEBUGGING
 Handige tools:
-Firefox: Firebug, Page Speed, YSlow
-Safari: Web Inspector
-Google Chrome: Developer Tools
-Opera: Dragonfly
-Internet Explorer 6-7: Developer Toolbar
-Internet Explorer 8-10: Developer Tools
-http://www.sublimetext.com/
-http://tools.pingdom.com/fpt/
-http://www.crockford.com/javascript/jsmin.html
-http://www.jslint.com/
-https://github.com/xdissent/ievms
-en... ehm.. andere dingen.
+* Firefox: Firebug, Page Speed, YSlow
+* Safari: Web Inspector
+* Google Chrome: Developer Tools
+* Opera: Dragonfly
+* Internet Explorer 6-7: Developer Toolbar
+* Internet Explorer 8-10: Developer Tools
+* http://www.sublimetext.com/
+* http://tools.pingdom.com/fpt/
+* http://www.crockford.com/javascript/jsmin.html
+* http://www.jslint.com/
+* https://github.com/xdissent/ievms
+* en... ehm.. andere dingen.
