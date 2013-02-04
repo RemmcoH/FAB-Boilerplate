@@ -34,7 +34,7 @@ Bestandsnamen worden met kleine letters geschreven en woorden worden gescheiden 
 
 
 Code conventies
-Worden per techniek behandeld. Wat wel voor alle technieken geldt is het gebruik van tabs voor indenting, en het aantal spaties in een tab. Hier kunnen we het heel lang over hebben maar laten we er nu voor kiezen 2 spaties per tab voor indenting te gebruiken.
+Worden per techniek behandeld. Wat wel voor alle technieken geldt is het gebruik van tabs voor indenting, en het aantal spaties in een tab. Hier kunnen we het heel lang over hebben maar laten we er nu voor kiezen 4 spaties per tab voor indenting te gebruiken.
 
 
 HTML
