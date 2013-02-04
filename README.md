@@ -8,21 +8,17 @@ Het doel is het schrijven van consistente code. Hiermee begrijpen we sneller elk
 
 De richtlijnen zijn onderverdeeld per techniek: HTML, CSS en Javascript. Daarnaast bevat het nog een algemeen deel.
 
-
 Algemeen
-HTML
-CSS
-Javascript
-
-
-Algemeen
-
 Opmaak, presentatie en gedrag scheiden. 
 Gebruik geen inline css en javascript in HTML en geen css in javascript.
-Om grote open source projecten begrijpelijk te houden heeft Google een heel complete set styleguides opgesteld: http://google-styleguide.googlecode.com. 
+Om grote open source projecten begrijpelijk te houden heeft Google een heel complete set styleguides opgesteld: 
+
+http://google-styleguide.googlecode.com. 
 
 Wij gaan gebruik maken van de styleguides voor HTML/CSS.
+
 HTML/CSS: http://google-styleguide.googlecode.com/svn/trunk/htmlcssguide.xml
+
 Javascript: http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml
 
 Dit zijn zeer complete richtlijnen met heldere voorbeelden van hoe dingen wel en niet moeten.
@@ -30,7 +26,8 @@ In principe houden we deze richtlijnen aan tenzij je een goede reden hebt om het
 
 TODO: Check of er iets van validator voor styling de html en css is
 
-Om te checken welke moderne features door de browser ondersteund worden gebruiken we Modernizr. In de boilerplate wordt een complete developers-versie geladen. Deze versie bevat alle opties maar is relatief zwaar. Bij de oplevering van een project dient deze vervangen te worden door een op maat gemaakte en daardoor lichtere modernizr.js. Die kun je hier genereren: http://modernizr.com/download/.
+Om te checken welke moderne features door de browser ondersteund worden gebruiken we Modernizr. In de boilerplate wordt een complete developers-versie geladen. Deze versie bevat alle opties maar is relatief zwaar. Bij de oplevering van een project dient deze vervangen te worden door een op maat gemaakte en daardoor lichtere modernizr.js. 
+Die kun je hier genereren: http://modernizr.com/download/.
 
 Bestandsnamen
 Bestandsnamen worden met kleine letters geschreven en woorden worden gescheiden met een ‘-’. Niet met een underscore of camelCased. Zorg voor beschrijvende namen zodat meteen duidelijk is wat het bestand inhoudt.
@@ -41,6 +38,7 @@ Worden per techniek behandeld. Wat wel voor alle technieken geldt is het gebruik
 
 
 HTML
+
 Structuur
 In gist staat een codesnippet van het basistemplate voor een webpagina zoals die ook in github staat, https://gist.github.com/4500578.
 
@@ -75,12 +73,15 @@ http://www.html-5.com/metatags/index.html#viewport-meta-tag
 
 
 HTML5 tags
-Met de komst van HTML5 zijn er nieuwe tags bijgekomen. Voor een overzicht en hoe ze gebruikt moeten worden zie http://www.w3schools.com/tags/default.asp.
+Met de komst van HTML5 zijn er nieuwe tags bijgekomen. Voor een overzicht en hoe ze gebruikt moeten worden zie 
+
+http://www.w3schools.com/tags/default.asp.
 
 
 
 
 CSS
+
 CSS wordt altijd als een extern document geladen. We doen niet aan inline styles. 
 Elk CSS document moet een header bevatten. Hierin staan de gegevens van de maker, een overzicht van de groeperingen binnen het document en een overzicht van de gebruikte standaardwaarden van bijvoorbeeld kleuren en fontgroottes.
 De eerder genoemde richtlijnen van Google (http://google-styleguide.googlecode.com/svn/trunk/htmlcssguide.xml) zijn bedoeld voor de CSS. 
@@ -126,7 +127,7 @@ Best Practices
 * Gebruik zo min mogelijk browser-specifieke stijlen. Waar nodig gebruik een browser-specifiek css document.
 * Gebruik waar mogelijk ID ipv class. Beter voor de performance.
 * Gebruik zo min mogelijk ‘dure’ selectoren. Vermijd bijvoorbeeld de * (wildcard) en kwalificaties van ID’s: “div#ID”. Beter voor de performance.
-* Vermijdt het gerbuik van ‘!important’. Slecht voor onderhoudbaarheid.
+* Vermijdt het gebruik van ‘!important’. Slecht voor onderhoudbaarheid.
 * Valideer de CSS (http://validator.w3.org/)
 
 
