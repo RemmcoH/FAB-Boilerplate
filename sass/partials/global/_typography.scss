@@ -1,0 +1,88 @@
+body{
+	font-size: 1em;
+	line-height: (24em/16);
+	font-family: $font-family-default;
+	@include respond-to(tablet){
+		font-size: (14em/16);
+		line-height: (24em/14);
+	}
+}
+
+p{
+	//margin-bottom: 2 * $base-line-height;
+}
+
+h1{
+	font-size: (24em / 16);
+	line-height: (30em / 24);
+	padding: $base-line-height 0 2*$base-line-height;
+	font-family: $font-family-contrast;
+	background: #079FE3;
+	color: #fff;
+
+	@include respond-to(tablet){
+		font-size: (36em / 14);
+		line-height: (54em/36);
+		//margin: 0 0 (2 * $base-line-height) 0;
+	}
+	@include respond-to(desktop){
+		font-size: (48em / 12);
+		line-height: (54em/48);
+		//margin: 0 0 (2 * $base-line-height) 0;
+	}
+/*
+	@include respond-to(desktop){
+		font-size: 2em;
+		line-height: 1.25;
+		margin: 0 0 (1.25*$base-line-height) 0;
+	}*/
+}
+
+h2{
+	font-size:  (18em / 16);
+	line-height: (24em / 18); 
+	font-family: $font-family-contrast;
+	margin: 0 0 (2 * $base-line-height) 0;
+	@include respond-to(tablet){
+		font-size:  (30em / 14);
+		line-height: (36em/30); 
+	}
+	@include respond-to(desktop){
+		font-size: (30em / 12);
+		line-height: (36em/30);
+		//margin: 0 0 (2 * $base-line-height) 0;
+	}
+}
+
+ul, ol{
+	margin-bottom: (2 * $base-line-height);
+	@include respond-to(tablet){
+		margin-bottom: (2 * $base-line-height);
+	}
+}
+
+blockquote{
+	font-style: italic;
+	font-family: $font-family-contrast;
+	font-size: (18em / 16);
+	line-height: (24em / 18);
+	//margin-bottom: (2 * $base-line-height);
+
+	&:before{
+		content:"\201C";
+		font-size: (100em/16);
+		color: $blue;
+
+	}
+	
+	@include respond-to(tablet){
+		font-size: (30em/14);
+		line-height: (36em / 30);
+		//margin: (4 * $base-line-height) 0;
+	}
+	@include respond-to(desktop){
+		font-size: (30em / 12);
+		line-height: (36em/30);
+		//margin: 0 0 (2 * $base-line-height) 0;
+	}
+}
